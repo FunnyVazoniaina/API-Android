@@ -4,12 +4,16 @@ import dotenv from 'dotenv';
 import enseignantsRoutes from './routes/enseignants.js';
 
 dotenv.config();
-const app = express();
 
+const app = express();
 app.use(cors());
 app.use(express.json());
 
 app.use('/api/enseignants', enseignantsRoutes);
+
+app.get('/', (req, res) => {
+  res.send('API Gestion Enseignants est en ligne!');
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
